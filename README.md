@@ -1,0 +1,1 @@
+# Linear-Regression-Modelling-of-Population-and-GDP-using-ALORA
