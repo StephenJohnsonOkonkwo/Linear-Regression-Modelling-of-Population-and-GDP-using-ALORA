@@ -1,0 +1,1635 @@
+>> 'C:/Users/calebokonkwo/Desktop/Trial 1/New Analysis using Natural Log'
+
+ans = C:/Users/calebokonkwo/Desktop/Trial 1/New Analysis using Natural Log
+>> load ("Glob_Nat_Log.txt")
+
+>> Size = size (Glob_Nat_Log)
+
+Size =
+
+   205     2
+
+>> corr (Glob_Nat_Log)
+
+ans =
+
+   1.00000   0.80931
+   0.80931   1.00000
+
+>> %%% Splitting The Data into Two
+
+>> P = 0.80 ;
+
+>> n = 205
+
+n =  205
+>> idx = randperm(n)  ;
+
+>> Train_Data =  Glob_Nat_Log(idx(1:round(P*n)),:)
+
+Train_Data =
+
+   11.5554   21.7134
+   11.9702   21.8713
+   17.4590   24.0229
+   15.0836   22.7703
+   14.9136   23.1871
+   17.0926   24.4758
+   14.1306   23.9447
+   16.1533   26.0181
+   14.8819   24.4464
+   14.5673   23.3919
+   10.5313   22.5588
+   10.9585   19.0337
+   17.8298   26.4841
+   12.7964   21.2678
+   15.3940   24.7265
+   14.5507   21.0440
+   16.5577   23.6164
+   13.9648   23.7079
+   16.2425   25.1907
+   16.0419   24.3620
+   17.3540   23.7143
+   10.9351   21.6392
+   15.1307   23.4282
+   16.1340   21.8561
+   16.8586   25.1128
+   11.9944   22.4655
+   15.5531   26.4359
+   11.3294   22.6391
+   18.4416   26.4027
+   16.6802   25.9403
+   12.5104   20.4484
+   17.4527   26.8920
+   14.0487   23.1822
+   10.5379   22.5573
+   17.1119   23.7872
+   17.7476   27.9551
+   16.6013   25.3213
+   18.3421   26.5305
+   13.5508   21.8855
+   15.2515   24.6259
+   15.2133   22.2979
+   16.6452   27.3635
+   10.4125   21.1440
+    9.4315   18.4203
+   14.6549   23.1786
+   11.5872   22.0445
+   15.5266   26.4534
+   15.6600   23.8776
+   19.5861   30.5335
+   13.9713   23.3020
+   16.1970   26.0044
+   10.9297   20.3093
+   18.1790   27.4800
+   16.1853   22.8894
+   12.5614   22.2762
+   18.3446   25.9872
+    9.7793   19.4516
+   16.2296   24.4885
+   15.9502   22.7844
+   15.7159   24.3113
+   10.9292   20.6518
+   12.7093   23.5765
+   16.4625   23.1162
+   16.1459   24.9883
+   17.5798   27.1114
+   19.0148   26.9270
+   11.6046   20.7203
+   11.4449   21.0435
+   15.9083   23.8017
+   11.1730   20.1084
+   16.4412   23.7172
+   15.8066   22.1534
+   19.1110   26.3237
+   16.2519   22.8974
+   16.2464   22.8368
+   15.6747   24.0498
+   15.5165   26.1811
+   11.6167   18.9579
+   13.2342   22.2892
+   13.5637   20.6883
+   17.1423   24.6188
+   17.4976   25.8351
+   16.8113   22.6998
+   13.7256   21.6175
+   15.4620   26.6786
+   14.8771   23.3756
+   17.9220   28.2386
+   18.4290   24.8913
+   15.6923   24.6348
+   15.6001   22.6221
+   15.0606   25.3616
+   15.0479   23.5090
+   16.9639   24.1545
+   15.5063   25.2058
+   18.0141   28.5223
+   14.5377   21.5517
+   15.1598   25.4644
+   15.9414   26.4264
+   11.4464   21.0135
+   12.9358   23.2828
+   14.7577   25.8093
+   14.8890   23.0797
+   18.0455   26.7180
+   17.6538   27.8093
+   15.6438   23.2693
+   16.0415   26.6042
+   17.2323   25.9693
+   13.3082   24.5379
+   12.8326   23.1873
+   16.0657   24.7567
+   15.9296   27.2451
+   13.6747   22.2671
+   17.7798   24.8124
+   16.0824   24.6950
+   16.1713   25.9535
+   14.0897   23.8609
+   17.6842   24.8823
+   17.4766   25.2953
+   13.0279   22.1365
+   15.8022   26.4578
+   13.0059   23.0950
+   16.6336   22.5754
+   10.7800   21.6468
+   14.3678   20.7700
+   10.4907   20.6107
+   13.3410   22.1227
+   17.1129   23.4928
+   15.3181   21.2510
+   16.9859   27.9324
+   14.4822   23.3889
+   15.7865   24.6393
+   16.0978   26.9451
+    9.3146   17.3848
+   11.6005   20.4428
+   15.9722   26.6682
+   21.0390   30.0303
+   18.1495   24.3587
+   15.3406   25.9006
+   14.5476   23.0323
+   16.7042   26.2201
+   17.2591   25.1281
+   16.6742   23.2958
+   15.7750   24.4028
+   18.2184   28.8431
+   12.0958   21.2295
+   13.4979   21.4459
+   17.7568   24.5814
+   17.3907   28.0711
+   15.5321   24.3012
+   16.2380   26.8592
+   16.1741   22.8389
+   12.1731   20.4854
+   14.8735   23.1557
+   16.7120   23.0669
+   13.9145   22.1277
+   17.0033   23.1501
+   13.2527   24.7793
+   18.6184   27.7885
+   18.1785   26.6788
+   16.9608   24.2237
+   15.2671   23.2627
+   16.0252   23.7668
+   15.0428   24.6987
+   18.8670   25.9967
+
+>> Test_Data =  Glob_Nat_Log(idx(round(P*n)+1:end),:)
+
+Test_Data =
+
+   15.786   22.163
+   11.521   19.892
+   14.132   24.161
+   17.677   26.405
+   16.604   24.879
+   11.030   22.273
+   15.313   21.879
+   16.201   24.220
+   17.361   25.340
+   17.144   25.479
+   12.203   19.578
+   16.440   22.122
+   15.267   24.956
+   11.598   19.573
+   15.194   24.714
+   13.171   21.191
+   16.802   25.904
+   19.136   28.220
+   13.995   21.852
+   16.581   23.779
+   18.786   27.941
+   14.497   24.022
+   14.404   22.586
+   10.844   20.643
+   17.272   27.207
+   16.187   23.208
+   15.724   23.390
+   17.626   25.234
+   18.661   29.110
+   16.102   25.548
+   17.992   28.706
+   15.363   26.398
+   15.396   22.870
+   17.387   25.902
+   16.495   23.601
+   17.226   26.432
+   14.540   24.487
+   11.265   21.757
+   13.310   20.867
+   20.993   28.375
+   19.370   27.481
+
+>> %%% Training Data
+
+>> Pop_train = Train_Data (:, 1);
+
+>> GDP_train = Train_Data (:, 2);
+
+>> %%% Test Data
+
+>> Pop_test = Test_Data (:, 1);
+
+>> GDP_test = Test_Data (:, 2);
+
+>> %%% Correlation Analysis of the Training Data
+
+>> corr (Pop_train, GDP_train)
+
+ans =  0.79440
+>> m = length (GDP_train)
+
+m =  164
+>> l = ones (m, 1);
+
+>> %%% Correlation Analysis of the Test Data
+
+>> corr (Pop_test, GDP_test)
+
+ans =  0.86256
+>> m_test = length (GDP_test)
+
+m_test =  41
+>> l_test = ones (m_test, 1);
+
+>> %%% X Variable . . .
+
+>> X_train = [l, Pop_train];
+
+>> X_test = [l_test, Pop_test];
+
+>>
+
+>> %%% STOCHASTIC GRADIENT DESCENT %%%%%%%%
+
+>> %% Initializing variables . . .
+
+>> alpha = 0.001;
+
+>> iterations = 1000;
+
+>> theta0_vals = zeros (1, iterations);
+
+>> theta1_vals = zeros (1, iterations);
+
+>> theta = [0 ; 0];
+
+>> J_vals = zeros (iterations);
+
+>> J_history = zeros (iterations, 1);
+
+>> theta_store = zeros (2, iterations);
+
+>> %% Running Iterations . . .
+
+>> for i = 1:iterations
+
+h = X_train * theta;
+
+errors = h - GDP_train;
+
+theta_change = (alpha * (X_train' * errors)) / m;
+
+theta = theta - theta_change;
+
+theta0_vals (i) = theta (1, :);
+
+theta1_vals (i) = theta (2, :);
+
+theta_store (:, i) = theta;
+
+J_history(i) = (sum ((h - GDP_train).^2))/ (2 * m);
+
+J_vals (i, i) = (sum ((h - GDP_train).^2))/ (2 * m);
+
+end
+
+>> %% End of Iterations.
+
+>> SGD_Loss = J_history;
+
+>> SGD_theta0 = theta0_vals;
+
+>> SGD_theta1 = theta1_vals;
+
+>> SGD_thetaStore = theta_store;
+
+>> SGD_theta = theta;
+
+>> min (SGD_Loss)
+
+ans =  2.5446
+>> max (SGD_Loss)
+
+ans =  290.28
+>> SGD_theta
+
+SGD_theta =
+
+   0.36887
+   1.53530
+
+>> %%% END OF STOCHASTIC GRADIENT DESCENT %%%%
+
+>>
+
+>> %%% STOCHASTIC GRADIENT DESCENT WITH MOMENTUM %%%%%%%%
+
+>> %% Initializing variables . . .
+
+>> alpha = 0.001;
+
+>> iterations = 1000;
+
+>> theta0_vals = zeros (1, iterations);
+
+>> theta1_vals = zeros (1, iterations);
+
+>> theta = [0 ; 0];
+
+>> J_vals = zeros (iterations);
+
+>> J_history = zeros (iterations, 1);
+
+>> theta_store = zeros (2, iterations);
+
+>> %% Initializing moments . . . .
+
+>> momentum = [0; 0]; % Momentum
+
+>> momentum_store = zeros (2, iterations);
+
+>> %% Initializing decays . . . .
+
+>> beta = 0.9;
+
+>> %% Running Iterations . . .
+
+>> for i = 1:iterations
+
+h = X_train * theta;
+
+errors = h - GDP_train;
+
+momentum = (beta * momentum) + ((X_train' * errors) / m);
+
+theta_change = (alpha * momentum);
+
+theta = theta - theta_change;
+
+momentum_store (:, i) = momentum;
+
+theta0_vals (i) = theta (1, :);
+
+theta1_vals (i) = theta (2, :);
+
+theta_store (:, i) = theta;
+
+J_history(i) = (sum ((h - GDP_train).^2))/ (2 * m);
+
+J_vals (i, i) = (sum ((h - GDP_train).^2))/ (2 * m);
+
+end
+
+>> %% End of Iterations.
+
+>> SGDwM_Loss = J_history;
+
+>> SGDwwM_theta0 = theta0_vals;
+
+>> SGDwM_theta1 = theta1_vals;
+
+>> SGDwM_thetaStore = theta_store;
+
+>> SGDwM_theta = theta;
+
+>> min (SGDwM_Loss)
+
+ans =  2.0242
+>> max (SGDwM_Loss)
+
+ans =  290.28
+>> SGDwM_theta
+
+SGDwM_theta =
+
+   2.5173
+   1.3973
+
+>> %%% END OF STOCHASTIC GRADIENT DESCENT WITH MOMENTUM %%%
+
+>> %%% STOCHASTIC GRADIENT DESCENT NESTEROV %%%%%%%%
+
+>> %% Initializing variables . . .
+
+>> alpha = 0.001;
+
+>> iterations = 1000;
+
+>> theta0_vals = zeros (1, iterations);
+
+>> theta1_vals = zeros (1, iterations);
+
+>> theta = [0 ; 0];
+
+>> J_vals = zeros (iterations);
+
+>> J_history = zeros (iterations, 1);
+
+>> theta_store = zeros (2, iterations);
+
+>> %% Initializing moments . . . .
+
+>> momentum = [0; 0]; % Momentum
+
+>> momentum_store = zeros (2, iterations);
+
+>> %% Initializing decays . . . .
+
+>> beta = 0.9;
+
+>> %% Running Iterations . . .
+
+>> for i = 1:iterations
+
+lambda = theta - (beta * momentum);
+
+h = X_train * lambda;
+
+errors = h - GDP_train;
+
+momentum = (beta * momentum) + ((X_train' * errors) / m);
+
+theta_change = (alpha * momentum);
+
+theta = theta - theta_change;
+
+momentum_store (:, i) = momentum;
+
+theta0_vals (i) = theta (1, :);
+
+theta1_vals (i) = theta (2, :);
+
+theta_store (:, i) = theta;
+
+J_history(i) = (sum ((h - GDP_train).^2))/ (2 * m);
+
+J_vals (i, i) = (sum ((h - GDP_train).^2))/ (2 * m);
+
+end
+
+>> %% End of Iterations.
+
+>> SGDNest_Loss = J_history;
+
+>> SGDNest_theta0 = theta0_vals;
+
+>> SGDNest_theta1 = theta1_vals;
+
+>> SGDNest_thetaStore = theta_store;
+
+>> SGDNest_theta = theta;
+
+>> min (SGDNest_Loss)
+
+ans =  290.28
+>> max (SGDNest_Loss)
+
+ans =  Inf
+>> SGDNest_theta
+
+SGDNest_theta =
+
+   NaN
+   NaN
+
+>> %%% END OF STOCHASTIC GRADIENT DESCENT NESTEROV %%%%%%
+
+>>
+
+>> %%%%%% STOCHASTIC GRADIENT DESCENT RMS PROPAGATION %%%%%%%
+
+>> %% Initializing variables . . .
+
+>> alpha = 0.001;
+
+>> iterations = 1000;
+
+>> theta0_vals = zeros (1, iterations);
+
+>> theta1_vals = zeros (1, iterations);
+
+>> theta = [0 ; 0];
+
+>> J_vals = zeros (iterations);
+
+>> J_history = zeros (iterations, 1);
+
+>> theta_store = zeros (2, iterations);
+
+>> %% Initializing moments . . . .
+
+>> momentum = [0; 0]; % Momentum
+
+>> momentum_store = zeros (2, iterations);
+
+>> %% Initializing decays . . . .
+
+>> beta = 0.9;
+
+>> %% Running Iterations . . .
+
+>> for i = 1:iterations
+
+h = X_train * theta;
+
+errors = h - GDP_train;
+
+momentum = (beta * momentum) + (1 - beta) * (((X_train' * errors) / m).^2);
+
+theta_change = pinv (sqrt (abs (momentum)) + 10e-8) * (alpha * ((X_train' * errors) / m));
+
+theta = theta - theta_change;
+
+momentum_store (:, i) = momentum;
+
+theta0_vals (i) = theta (1, :);
+
+theta1_vals (i) = theta (2, :);
+
+theta_store (:, i) = theta;
+
+J_history(i) = (sum ((h - GDP_train).^2))/ (2 * m);
+
+J_vals (i, i) = (sum ((h - GDP_train).^2))/ (2 * m);
+
+end
+
+>> %% End of Iterations.
+
+>> RMSProp_Loss = J_history;
+
+>> RMSProp_theta0 = theta0_vals;
+
+>> RMSProp_theta1 = theta1_vals;
+
+>> RMSProp_thetaStore = theta_store;
+
+>> RMSProp_theta = theta;
+
+>> min (RMSProp_Loss)
+
+ans =  31.592
+>> max (RMSProp_Loss)
+
+ans =  290.28
+>> RMSProp_theta
+
+RMSProp_theta =
+
+   0.99899
+   0.99899
+
+>> %%% END OF STOCHASTIC GRADIENT DESCENT RMS PROPAGATION %%%%%%
+
+>> %%%%%% STOCHASTIC GRADIENT DESCENT ADAM %%%%%%%
+
+>> %% Initializing variables . . .
+
+>> alpha = 0.001;
+
+>> iterations = 1000;
+
+>> theta0_vals = zeros (1, iterations);
+
+>> theta1_vals = zeros (1, iterations);
+
+>> theta = [0 ; 0];
+
+>> J_vals = zeros (iterations);
+
+>> J_history = zeros (iterations, 1);
+
+>> theta_store = zeros (2, iterations);
+
+>> %% Initializing moments . . . .
+
+>> moment_1 = [0; 0]; % First moment
+
+>> moment_2 = [0; 0]; % Second moment
+
+>> m1_store = zeros (2, iterations);
+
+>> m2_store = zeros (2, iterations);
+
+>> %% Initializing decays . . . .
+
+>> beta_1 = 0.9;
+
+>> beta_2 = 0.999;
+
+>> %% Running Iterations . . .
+
+>> for i = 1:iterations
+
+h = X_train * theta;
+
+errors = h - GDP_train;
+
+moment_1 = (beta_1 * moment_1) + (1 - beta_1) * ((X_train' * errors) / m);
+
+moment_2 = (beta_2 * moment_2) + (1 - beta_2) * ((X_train' * errors) / m);
+
+theta_change = pinv (sqrt (abs (moment_2)) + 10e-8) * (alpha * moment_1);
+
+theta = theta - theta_change;
+
+m1_store (:, i) = moment_1;
+
+m2_store (:, i) = moment_2;
+
+theta0_vals (i) = theta (1, :);
+
+theta1_vals (i) = theta (2, :);
+
+theta_store (:, i) = theta;
+
+J_history(i) = (sum ((h - GDP_train).^2))/ (2 * m);
+
+J_vals (i, i) = (sum ((h - GDP_train).^2))/ (2 * m);
+
+end
+
+>> %% End of Iterations.
+
+>> Adam_Loss = J_history;
+
+>> Adam_theta0 = theta0_vals;
+
+>> Adam_theta1 = theta1_vals;
+
+>> Adam_thetaStore = theta_store;
+
+>> Adam_theta = theta;
+
+>> min (Adam_Loss)
+
+ans =  2.2655
+>> max (Adam_Loss)
+
+ans =  290.28
+>> Adam_theta
+
+Adam_theta =
+
+   1.4653
+   1.4653
+
+>> %%% END OF STOCHASTIC GRADIENT DESCENT ADAM %%%%%%
+
+>>
+
+>> GDP_SGD_cap = X_test * SGD_theta;
+
+>> GDP_SGDwM_cap = X_test * SGDwM_theta;
+
+>> GDP_SGDNest_cap = X_test * SGDNest_theta;
+
+>> GDP_RMSProp_cap = X_test * RMSProp_theta;
+
+>> GDP_Adam_cap = X_test * Adam_theta;
+
+>> %%% Displaying the Data
+
+>> GDP_SGD_cap
+
+GDP_SGD_cap =
+
+   24.605
+   18.057
+   22.065
+   27.508
+   25.861
+   17.304
+   23.880
+   25.243
+   27.024
+   26.689
+   19.105
+   25.609
+   23.808
+   18.176
+   23.696
+   20.590
+   26.165
+   29.748
+   21.855
+   25.825
+   29.211
+   22.627
+   22.484
+   17.017
+   26.887
+   25.221
+   24.510
+   27.430
+   29.019
+   25.091
+   27.992
+   23.957
+   24.006
+   27.063
+   25.694
+   26.816
+   22.692
+   17.663
+   20.804
+   32.600
+   30.108
+
+>> GDP_SGDwM_cap
+
+GDP_SGDwM_cap =
+
+   24.574
+   18.615
+   22.263
+   27.216
+   25.717
+   17.930
+   23.914
+   25.155
+   26.776
+   26.471
+   19.568
+   25.488
+   23.849
+   18.723
+   23.747
+   20.920
+   25.994
+   29.255
+   22.072
+   25.685
+   28.766
+   22.774
+   22.644
+   17.669
+   26.651
+   25.135
+   24.488
+   27.145
+   28.591
+   25.016
+   27.657
+   23.984
+   24.029
+   26.812
+   25.565
+   26.586
+   22.833
+   18.257
+   21.115
+   31.851
+   29.582
+
+>> GDP_SGDNest_cap
+
+GDP_SGDNest_cap =
+
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+   NaN
+
+>> GDP_RMSProp_cap
+
+GDP_RMSProp_cap =
+
+   16.769
+   12.508
+   15.116
+   18.658
+   17.586
+   12.018
+   16.297
+   17.184
+   18.343
+   18.125
+   13.190
+   17.422
+   16.250
+   12.585
+   16.178
+   14.156
+   17.784
+   20.116
+   14.980
+   17.563
+   19.766
+   15.482
+   15.389
+   11.832
+   18.254
+   17.170
+   16.707
+   18.607
+   19.641
+   17.085
+   18.973
+   16.347
+   16.379
+   18.369
+   17.477
+   18.207
+   15.524
+   12.252
+   14.295
+   21.971
+   20.349
+
+>> GDP_Adam_cap
+
+GDP_Adam_cap =
+
+   24.596
+   18.347
+   22.172
+   27.367
+   25.795
+   17.628
+   23.904
+   25.205
+   26.905
+   26.586
+   19.347
+   25.555
+   23.835
+   18.460
+   23.729
+   20.764
+   26.085
+   29.505
+   21.972
+   25.761
+   28.992
+   22.708
+   22.572
+   17.354
+   26.774
+   25.184
+   24.505
+   27.292
+   28.809
+   25.060
+   27.829
+   23.977
+   24.025
+   26.943
+   25.635
+   26.706
+   22.771
+   17.971
+   20.968
+   32.227
+   29.848
+
+>> %%% RUN STUDENT'S T-TEST N DATA %%%%%
+
+>> pkg load statistics
+
+warning: isdir is obsolete; use isfolder or dir_in_loadpath instead
+>> [h, pval, ci, stats] = ttest2 (GDP_test', GDP_SGD_cap')
+
+h = 0
+pval =  0.80094
+ci =
+
+  -1.5911   1.2322
+
+stats =
+
+  scalar structure containing the fields:
+
+    tstat = -0.25297
+    df =  80
+    sd =  3.2116
+
+>> [h, pval, ci, stats] = ttest2 (GDP_test', GDP_SGDwM_cap')
+
+h = 0
+pval =  0.80592
+ci =
+
+  -1.4919   1.1630
+
+stats =
+
+  scalar structure containing the fields:
+
+    tstat = -0.24650
+    df =  80
+    sd =  3.0201
+
+>> [h, pval, ci, stats] = ttest2 (GDP_test', GDP_SGDNest_cap')
+
+h = 0
+pval =  NaN
+ci =
+
+   NaN   NaN
+
+stats =
+
+  scalar structure containing the fields:
+
+    tstat =  NaN
+    df =  80
+    sd =  NaN
+
+>> [h, pval, ci, stats] = ttest2 (GDP_test', GDP_RMSProp_cap')
+
+h =  1
+pval = 0
+ci =
+
+   6.4922   8.6999
+
+stats =
+
+  scalar structure containing the fields:
+
+    tstat =  13.695
+    df =  80
+    sd =  2.5114
+
+>> [h, pval, ci, stats] = ttest2 (GDP_test', GDP_Adam_cap')
+
+h = 0
+pval =  0.79575
+ci =
+
+  -1.5472   1.1900
+
+stats =
+
+  scalar structure containing the fields:
+
+    tstat = -0.25972
+    df =  80
+    sd =  3.1137
+
+>> theta_norm_eqn = pinv (X_train' * X_train) * X_train' * GDP_train
+
+theta_norm_eqn =
+
+   11.96331
+    0.79036
+
+>> Normal_Eqn_cap = X_test * theta_norm_eqn;
+
+>> [h, pval, ci, stats] = ttest2 (GDP_test', Normal_Eqn_cap')
+
+h = 0
+pval =  0.84567
+ci =
+
+  -1.10130   0.90447
+
+stats =
+
+  scalar structure containing the fields:
+
+    tstat = -0.19528
+    df =  80
+    sd =  2.2817
+
+>>
+
+>> GDP_test
+
+GDP_test =
+
+   22.163
+   19.892
+   24.161
+   26.405
+   24.879
+   22.273
+   21.879
+   24.220
+   25.340
+   25.479
+   19.578
+   22.122
+   24.956
+   19.573
+   24.714
+   21.191
+   25.904
+   28.220
+   21.852
+   23.779
+   27.941
+   24.022
+   22.586
+   20.643
+   27.207
+   23.208
+   23.390
+   25.234
+   29.110
+   25.548
+   28.706
+   26.398
+   22.870
+   25.902
+   23.601
+   26.432
+   24.487
+   21.757
+   20.867
+   28.375
+   27.481
+
+>> GDP_train
+
+GDP_train =
+
+   21.713
+   21.871
+   24.023
+   22.770
+   23.187
+   24.476
+   23.945
+   26.018
+   24.446
+   23.392
+   22.559
+   19.034
+   26.484
+   21.268
+   24.727
+   21.044
+   23.616
+   23.708
+   25.191
+   24.362
+   23.714
+   21.639
+   23.428
+   21.856
+   25.113
+   22.465
+   26.436
+   22.639
+   26.403
+   25.940
+   20.448
+   26.892
+   23.182
+   22.557
+   23.787
+   27.955
+   25.321
+   26.531
+   21.886
+   24.626
+   22.298
+   27.363
+   21.144
+   18.420
+   23.179
+   22.044
+   26.453
+   23.878
+   30.534
+   23.302
+   26.004
+   20.309
+   27.480
+   22.889
+   22.276
+   25.987
+   19.452
+   24.488
+   22.784
+   24.311
+   20.652
+   23.577
+   23.116
+   24.988
+   27.111
+   26.927
+   20.720
+   21.044
+   23.802
+   20.108
+   23.717
+   22.153
+   26.324
+   22.897
+   22.837
+   24.050
+   26.181
+   18.958
+   22.289
+   20.688
+   24.619
+   25.835
+   22.700
+   21.618
+   26.679
+   23.376
+   28.239
+   24.891
+   24.635
+   22.622
+   25.362
+   23.509
+   24.155
+   25.206
+   28.522
+   21.552
+   25.464
+   26.426
+   21.013
+   23.283
+   25.809
+   23.080
+   26.718
+   27.809
+   23.269
+   26.604
+   25.969
+   24.538
+   23.187
+   24.757
+   27.245
+   22.267
+   24.812
+   24.695
+   25.953
+   23.861
+   24.882
+   25.295
+   22.137
+   26.458
+   23.095
+   22.575
+   21.647
+   20.770
+   20.611
+   22.123
+   23.493
+   21.251
+   27.932
+   23.389
+   24.639
+   26.945
+   17.385
+   20.443
+   26.668
+   30.030
+   24.359
+   25.901
+   23.032
+   26.220
+   25.128
+   23.296
+   24.403
+   28.843
+   21.230
+   21.446
+   24.581
+   28.071
+   24.301
+   26.859
+   22.839
+   20.485
+   23.156
+   23.067
+   22.128
+   23.150
+   24.779
+   27.789
+   26.679
+   24.224
+   23.263
+   23.767
+   24.699
+   25.997
+
+>> Pop_test
+
+Pop_test =
+
+   15.786
+   11.521
+   14.132
+   17.677
+   16.604
+   11.030
+   15.313
+   16.201
+   17.361
+   17.144
+   12.203
+   16.440
+   15.267
+   11.598
+   15.194
+   13.171
+   16.802
+   19.136
+   13.995
+   16.581
+   18.786
+   14.497
+   14.404
+   10.844
+   17.272
+   16.187
+   15.724
+   17.626
+   18.661
+   16.102
+   17.992
+   15.363
+   15.396
+   17.387
+   16.495
+   17.226
+   14.540
+   11.265
+   13.310
+   20.993
+   19.370
+
+>> Pop_train
+
+Pop_train =
+
+   11.5554
+   11.9702
+   17.4590
+   15.0836
+   14.9136
+   17.0926
+   14.1306
+   16.1533
+   14.8819
+   14.5673
+   10.5313
+   10.9585
+   17.8298
+   12.7964
+   15.3940
+   14.5507
+   16.5577
+   13.9648
+   16.2425
+   16.0419
+   17.3540
+   10.9351
+   15.1307
+   16.1340
+   16.8586
+   11.9944
+   15.5531
+   11.3294
+   18.4416
+   16.6802
+   12.5104
+   17.4527
+   14.0487
+   10.5379
+   17.1119
+   17.7476
+   16.6013
+   18.3421
+   13.5508
+   15.2515
+   15.2133
+   16.6452
+   10.4125
+    9.4315
+   14.6549
+   11.5872
+   15.5266
+   15.6600
+   19.5861
+   13.9713
+   16.1970
+   10.9297
+   18.1790
+   16.1853
+   12.5614
+   18.3446
+    9.7793
+   16.2296
+   15.9502
+   15.7159
+   10.9292
+   12.7093
+   16.4625
+   16.1459
+   17.5798
+   19.0148
+   11.6046
+   11.4449
+   15.9083
+   11.1730
+   16.4412
+   15.8066
+   19.1110
+   16.2519
+   16.2464
+   15.6747
+   15.5165
+   11.6167
+   13.2342
+   13.5637
+   17.1423
+   17.4976
+   16.8113
+   13.7256
+   15.4620
+   14.8771
+   17.9220
+   18.4290
+   15.6923
+   15.6001
+   15.0606
+   15.0479
+   16.9639
+   15.5063
+   18.0141
+   14.5377
+   15.1598
+   15.9414
+   11.4464
+   12.9358
+   14.7577
+   14.8890
+   18.0455
+   17.6538
+   15.6438
+   16.0415
+   17.2323
+   13.3082
+   12.8326
+   16.0657
+   15.9296
+   13.6747
+   17.7798
+   16.0824
+   16.1713
+   14.0897
+   17.6842
+   17.4766
+   13.0279
+   15.8022
+   13.0059
+   16.6336
+   10.7800
+   14.3678
+   10.4907
+   13.3410
+   17.1129
+   15.3181
+   16.9859
+   14.4822
+   15.7865
+   16.0978
+    9.3146
+   11.6005
+   15.9722
+   21.0390
+   18.1495
+   15.3406
+   14.5476
+   16.7042
+   17.2591
+   16.6742
+   15.7750
+   18.2184
+   12.0958
+   13.4979
+   17.7568
+   17.3907
+   15.5321
+   16.2380
+   16.1741
+   12.1731
+   14.8735
+   16.7120
+   13.9145
+   17.0033
+   13.2527
+   18.6184
+   18.1785
+   16.9608
+   15.2671
+   16.0252
+   15.0428
+   18.8670
+
+>> m_test
+
+m_test =  41
+>> %%%% Root Mean Square Error Test
+
+>> RMSE_SGD = sqrt (sum((GDP_SGD_cap - GDP_test).^2)/m_test)
+
+RMSE_SGD =  1.9701
+>> RMSE_SGDwM = sqrt (sum((GDP_SGDwM_cap - GDP_test).^2)/m_test)
+
+RMSE_SGDwM =  1.7351
+>> RMSE_SGDNest = sqrt (sum((GDP_SGDNest_cap - GDP_test).^2)/m_test)
+
+RMSE_SGDNest =  NaN
+>> RMSE_RMSProp = sqrt (sum((GDP_RMSProp_cap - GDP_test).^2)/m_test)
+
+RMSE_RMSProp =  7.7081
+>> RMSE_Adam = sqrt (sum((GDP_Adam_cap - GDP_test).^2)/m_test)
+
+RMSE_Adam =  1.8478
+>> RMSE_Normal_Eqn = sqrt (sum((Normal_Eqn_cap - GDP_test).^2)/m_test)
+
+RMSE_Normal_Eqn =  1.3375
+>>
+
+>> %%% Loss Values
+
+>> epoch = [1:iterations];
+
+>> Loss_Data = [SGD_Loss, SGDwM_Loss, SGDNest_Loss, RMSProp_Loss, Adam_Loss];
+
+>> save Loss_Data.txt Loss_Data
+
+>> %%%%% Save Loss Values
+
+>> save SGD_Loss.txt SGD_Loss
+
+>> save SGDwM_Loss.txt SGDwM_Loss
+
+>> save SGDNest_Loss.txt SGDNest_Loss
+
+>> save RMSProp_Loss.txt RMSProp_Loss
+
+>> save Adam_Loss.txt Adam_Loss
+
+>>
+
+>> %%%% Save Estimated Values
+
+>> Estimated_Data = [GDP_SGD_cap, GDP_SGDwM_cap, GDP_SGDNest_cap, GDP_RMSProp_cap, GDP_Adam_cap, Normal_Eqn_cap]
+
+Estimated_Data =
+
+   24.605   24.574      NaN   16.769   24.596   24.440
+   18.057   18.615      NaN   12.508   18.347   21.069
+   22.065   22.263      NaN   15.116   22.172   23.132
+   27.508   27.216      NaN   18.658   27.367   25.934
+   25.861   25.717      NaN   17.586   25.795   25.086
+   17.304   17.930      NaN   12.018   17.628   20.681
+   23.880   23.914      NaN   16.297   23.904   24.066
+   25.243   25.155      NaN   17.184   25.205   24.768
+   27.024   26.776      NaN   18.343   26.905   25.685
+   26.689   26.471      NaN   18.125   26.586   25.513
+   19.105   19.568      NaN   13.190   19.347   21.608
+   25.609   25.488      NaN   17.422   25.555   24.957
+   23.808   23.849      NaN   16.250   23.835   24.029
+   18.176   18.723      NaN   12.585   18.460   21.130
+   23.696   23.747      NaN   16.178   23.729   23.972
+   20.590   20.920      NaN   14.156   20.764   22.373
+   26.165   25.994      NaN   17.784   26.085   25.243
+   29.748   29.255      NaN   20.116   29.505   27.088
+   21.855   22.072      NaN   14.980   21.972   23.024
+   25.825   25.685      NaN   17.563   25.761   25.068
+   29.211   28.766      NaN   19.766   28.992   26.811
+   22.627   22.774      NaN   15.482   22.708   23.422
+   22.484   22.644      NaN   15.389   22.572   23.348
+   17.017   17.669      NaN   11.832   17.354   20.534
+   26.887   26.651      NaN   18.254   26.774   25.615
+   25.221   25.135      NaN   17.170   25.184   24.757
+   24.510   24.488      NaN   16.707   24.505   24.391
+   27.430   27.145      NaN   18.607   27.292   25.894
+   29.019   28.591      NaN   19.641   28.809   26.712
+   25.091   25.016      NaN   17.085   25.060   24.690
+   27.992   27.657      NaN   18.973   27.829   26.183
+   23.957   23.984      NaN   16.347   23.977   24.106
+   24.006   24.029      NaN   16.379   24.025   24.132
+   27.063   26.812      NaN   18.369   26.943   25.705
+   25.694   25.565      NaN   17.477   25.635   25.000
+   26.816   26.586      NaN   18.207   26.706   25.578
+   22.692   22.833      NaN   15.524   22.771   23.455
+   17.663   18.257      NaN   12.252   17.971   20.866
+   20.804   21.115      NaN   14.295   20.968   22.483
+   32.600   31.851      NaN   21.971   32.227   28.556
+   30.108   29.582      NaN   20.349   29.848   27.273
+
+>> save Estimated_Data.txt Estimated_Data
+
+>>
+
+>> %%%%% Plotting Loss
+
+>> plot (epoch, SGD_Loss, '-', 'Color', 'black')
+
+>> hold on;
+
+>> plot (epoch, SGDwM_Loss, '-', 'Color', 'black')
+
+>> plot (epoch, RMSProp_Loss, '-', 'Color', 'black')
+
+>> plot (epoch, Adam_Loss, '-', 'Color', 'black')
+
+>> xlabel('Iteration'); ylabel('Loss');
+
+>> plot (epoch, SGD_Loss, '-', 'Color', 'black')
+
+>> xlabel('Iteration'); ylabel('Loss');
+
+>> plot (epoch, SGDwM_Loss, '-', 'Color', 'black')
+
+>> xlabel('Iteration'); ylabel('Loss');
+
+>> plot (epoch, RMSProp_Loss, '-', 'Color', 'black')
+
+>> xlabel('Iteration'); ylabel('Loss');
+
+>> plot (epoch, Adam_Loss, '-', 'Color', 'black')
+
+>> xlabel('Iteration'); ylabel('Loss');
+
+>> plot (epoch, SGD_Loss, '-', 'Color', 'black')
+
+>> hold on;
+
+>> plot (epoch, SGDwM_Loss, '- - *', 'Color', 'black')
+
+>> plot (epoch, RMSProp_Loss, '- . -', 'Color', 'black')
+
+>> plot (epoch, Adam_Loss, '.', 'Color', 'black')
+
+>> xlabel('Iteration'); ylabel('Loss');
